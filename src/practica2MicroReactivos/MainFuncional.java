@@ -19,6 +19,10 @@ public class MainFuncional {
 				new Product("Coke", 1.89, Tax.REDUCED),
 				new Product("Whiskey", 19.90, Tax.NORMAL));
 		
+		// CALCULO COSTE TOTAL SIN INMPUESTOS DOUBLE //
+		Optional<Double> sumaSinImpuestos = shoppingCart.stream().map(product -> product.price).reduce((x, y) -> x + y);
+		System.out.println("Cantidad total sin impuestos con Double: "+ sumaSinImpuestos.get() +"€");
+		
 		// CALCULO COSTE TOTAL CON INMPUESTOS DOUBLE //
 		Optional<Double> sumaTotal = shoppingCart.stream().map(product -> product.price + ((product.price * product.tax.percent)/100)).reduce((x,y) -> x+y);
 		System.out.println("Cantidad total con impuestos con Double: "+ sumaTotal.get() +"€");
